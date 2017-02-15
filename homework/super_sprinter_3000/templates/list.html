@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block body %}
+<table>
+  <tr>
+      <th>ID</th>
+      <th>Story Title</th>
+      <th>User Story</th>
+      <th>Acceptance Criteria</th>
+      <th>Business Value</th>
+      <th>Estimation</th>
+      <th>Status</th>
+  </tr>
+    {% for story in table %}
+      <tr>
+          <td>{{ story.id }}</td>
+          <td>{{ story.story_title }}</td>
+          <td>{{ story.user_story }}</td>
+          <td>{{ story.acceptance_criteria }}</td>
+          <td>{{ story.business_value }}</td>
+          <td>{{ story.estimation }}</td>
+          <td>{{ story.status }}</td>
+          <td>
+              <a href="{{ url_for('get_story_for_edit', story_id=story.id) }}" >
+                  <img src="{{ url_for('static', filename='edit.png') }}" alt="Edit Icon" style="width:16px;height:16px;">
+              </a>
+          </td>
+          <td>
+              <a href="{{ url_for('delete_story', story_id=story.id) }}" >
+                  <img src="{{ url_for('static', filename='del.png') }}" alt="Delete Icon" style="width:16px;height:16px;">
+              </a>
+          </td>
+      </tr>
+    {% endfor %}
+</table>
+    <dl>
+    <dd><br></dd>
+        <dd><a href="{{ url_for('add_new_story') }}"><input type="button" value="Add new story"></a></dd>
+    </dl>
+{% endblock %}

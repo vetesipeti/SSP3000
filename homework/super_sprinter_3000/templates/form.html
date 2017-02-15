@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+{% block body %}
+{% if story %}
+    <form action="{{ url_for('edit_story', story_id=story.id) }}" method=post>
+        <dl>
+            <dt>Story Title:</dt>
+            <dd><input type=text name=story_title value={{ story.story_title }}></dd>
+            <dt>User Story:</dt>
+            <dd><textarea name=user_story rows=7 cols=40>{{ story.user_story }}</textarea></dd>
+            <dt>Acceptance Criteria:</dt>
+            <dd><textarea name=acceptance_criteria rows=9 cols=40>{{ story.acceptance_criteria }}</textarea></dd>
+            <dt>Business value:</dt>
+            <dd><input type="number" min="100" max="1500" step="100" name="business_value" value={{ story.business_value }}></dd>
+            <dt>Estimation:</dt>
+            <dd><input type="number" min="0.5" max="40" step="0.5" name="estimation" value={{ story.estimation }}></dd>
+            <dt>
+                <br>
+                <label for="status">Status: </label>
+                <select name="status" id="status">
+                    <option selected>{{ story.status }}</option>
+                    <option>Planning</option>
+                    <option>To Do</option>
+                    <option>In Progress</option>
+                    <option>Review</option>
+                    <option>Done</option>
+                </select>
+            </dt>
+            <dd>
+                <br><input type=submit value=Save>
+            </dl>
+    </form>
+{% else %}
+<form action="{{ url_for('create_story') }}" method=post>
+        <dl>
+            <dt>Story Title:</dt>
+            <dd><input type=text name="story_title">
+            <dt>User Story:</dt>
+            <dd><textarea name=user_story rows=5 cols=40 ></textarea>
+            <dt>Acceptance Criteria:</dt>
+            <dd><textarea name=acceptance_criteria rows=5 cols=40></textarea>
+            <dt>Business value:</dt>
+            <dd><input type="number" min="100" max="1500" step="100" name="business_value">
+            <dt>Estimation:</dt>
+            <dd><input type="number" min="0.5" max="40" step="0.5" name="estimation">
+            <dt>
+                <br>
+                <label for="status">Status: </label>
+                <select name="status" id="status">
+                    <option>Planning</option>
+                    <option>To Do</option>
+                    <option>In Progress</option>
+                    <option>Review</option>
+                    <option>Done</option>
+                </select>
+            </dt>
+            <dd><br><input type=submit value=Save>
+        </dl>
+    </form>
+{% endif %}
+{% endblock %}

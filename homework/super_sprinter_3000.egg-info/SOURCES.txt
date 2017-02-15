@@ -1,0 +1,12 @@
+MANIFEST.in
+super_sprinter_3000/__init__.py
+super_sprinter_3000/connectdatabase.py
+super_sprinter_3000/models.py
+super_sprinter_3000/super_sprinter_3000.py
+super_sprinter_3000.egg-info/PKG-INFO
+super_sprinter_3000.egg-info/SOURCES.txt
+super_sprinter_3000.egg-info/dependency_links.txt
+super_sprinter_3000.egg-info/requires.txt
+super_sprinter_3000.egg-info/top_level.txt
+super_sprinter_3000/templates/form.html
+super_sprinter_3000/templates/list.html
